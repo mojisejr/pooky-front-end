@@ -1,7 +1,7 @@
-import puppy1 from "../../images/story1.jpg";
-import puppy2 from "../../images/story2.jpg";
-import puppy3 from "../../images/story3.jpg";
-import puppy4 from "../../images/story4.jpg";
+import puppy1 from "../../images/story1.JPG";
+import puppy2 from "../../images/story2.JPG";
+import puppy3 from "../../images/story3.JPG";
+import puppy4 from "../../images/story4.JPG";
 import StoryBox from "../StoryBox";
 import SectionHeader from "../SectionHeader";
 function PookyStorySection() {
