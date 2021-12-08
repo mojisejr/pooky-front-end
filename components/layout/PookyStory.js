@@ -4,12 +4,20 @@ import puppy3 from "../../images/story3.JPG";
 import puppy4 from "../../images/story4.JPG";
 import StoryBox from "../StoryBox";
 import SectionHeader from "../SectionHeader";
+import Image from "next/image";
 function PookyStorySection() {
   return (
     <div>
-      <div className="pooky-story-section section w-screen shadow-2xl">
+      <div className="pooky-story-section section w-screen md:shadow-2xl">
         <SectionHeader text={"Pooky puppy story"} />
-        <div className="story-box grid grid-cols-2 pl-20 pr-20 pt-20 gap-5">
+        <div className="md:hidden flex h-24 mt-4">
+          <Image src={puppy1} alt="pooky image" width={150} height={150} />
+          <Image src={puppy2} alt="pooky image" width={150} height={150} />
+          <Image src={puppy3} alt="pooky image" width={150} height={150} />
+          <Image src={puppy4} alt="pooky image" width={150} height={150} />
+        </div>
+
+        <div className="story-box grid md:grid-cols-2 grid-flow-row md:pl-20 md:pr-20 md:pt-20 pt-10 gap-5 p-5">
           <StoryBox image={puppy1} rotate={"5deg"}>
             <p>
               In the world that the best thing the dog could be is only the best

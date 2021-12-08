@@ -1,17 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import binanceLogo from "../../images/binancelogo.png";
+import pookyLogo from "../../images/pookyplanet.PNG";
 function HomeSection() {
   return (
     <div>
-      <div className="home-section section w-screen text-white shadow-2xl rounded-t-2xl">
-        <div className="header-box flex justify-between pt-6">
-          <div className="logo-box p-logo">
-            <div className="text-5xl font-bold">Pooky</div>
-            <div className="text-xl">Puppy World</div>
+      <div className="home-section section w-screen text-white md:shadow-2xl md:rounded-t-2xl">
+        <div className="header-box flex md:justify-between items-center pt-6 flex-col md:flex-row">
+          <div className="logo-box p-logo md:flex md:flex-col hidden">
+            <div className="md:text-5xl text-3xl font-bold">Pooky</div>
+            <div className="md:text-xl text-sm">Puppy World</div>
+          </div>
+          <div className="logo-box flex flex-col items-center md:hidden">
+            <div className="rounded-full">
+              <Image
+                src={pookyLogo}
+                alt="small logo"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div>
+              <div className="md:text-5xl text-3xl font-bold">Pooky</div>
+              <div className="md:text-xl text-sm">Puppy World</div>
+            </div>
           </div>
 
-          <div className="menu-box flex text-xl gap-3 pr-10 pt-10">
+          <div className="menu-box flex md:flex-row flex-col text-xl gap-3 md:pr-10 p-10 mt-5 md:bg-transparent bg-gray-300 bg-opacity-80 rounded-xl md:text-white text-black">
             <Link href="">
               <a className="menu-item discord hover:text-purple-500">discord</a>
             </Link>

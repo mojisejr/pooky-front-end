@@ -7,15 +7,15 @@ function PookyTokenSection() {
     <div>
       <div className="pooky-token-section section w-screen shadow-2xl text-white">
         <SectionHeader text={"Pooky Puppy NFT"} />
-        <div className="token-container flex flex-col items-center pl-40 pr-40 pt-5">
-          <div className="token-image w-72 ">
+        <div className="token-container flex flex-col items-center md:pl-40 md:pr-40 pt-5">
+          <div className="token-image w-72">
             <Image
               className="rounded-2xl"
               src={pookyGif1}
               alt="pooky puppy nft"
             ></Image>
           </div>
-          <div className="token-content p-5 text-xl">
+          <div className="token-content p-5 md:text-xl text-xs">
             <p>
               Pooky Puppy NFT is the 3000 unique cuties Pomparanian in the
               world. you can name her the way you like with the suffix [.pooky]

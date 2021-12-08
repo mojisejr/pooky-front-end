@@ -4,8 +4,8 @@ function PookyRoadMapSection() {
     <div>
       <div className="pooky-roadmap-section section w-screen shadow-2xl text-pink-500">
         <SectionHeader text={"Road Map to Pookaverse"} />
-        <div className="roadmap-container flex justify-center pt-20">
-          <ul className="text-xl pr-40 pl-40 space-y-10">
+        <div className="roadmap-container flex justify-center md:pt-20 p-5">
+          <ul className="md:text-xl md:pr-40 md:pl-40 md:space-y-10">
             <li>
               <span className="text-2xl text-blue-400">Q1: </span> Public sale
               open! no whitelist. Weekly game contest, giveaway during the way

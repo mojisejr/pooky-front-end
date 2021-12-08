@@ -10,7 +10,7 @@ function PookyTeamSection() {
     <div>
       <div className="pooky-team-section section w-screen shadow-2xl text-white rounded-b-2xl flex flex-col">
         <SectionHeader text={"Pooky Puppy Team"} />
-        <div className="grid grid-cols-2  ml-40 mr-40 rounded-2xl overflow-hidden shadow-2xl mt-20">
+        <div className="grid md:grid-cols-2 grid-flow-row  md:ml-40 md:mr-40 rounded-2xl overflow-hidden md:shadow-2xl md:mt-20">
           <PookyTeamCard
             image={team1}
             name="Ola.pooky"
@@ -27,11 +27,11 @@ function PookyTeamSection() {
           />
         </div>
         <div className="flex-grow"></div>
-        <div className="flex pt-3 pb-3 pl-10 pr-10 bg-opacity-40 bg-gray-200 justify-between items-center">
+        <div className="flex md:flex-row flex-col pt-3 pb-3 pl-10 pr-10 bg-opacity-40 bg-gray-200 justify-between items-center">
           <div className="max-w-xs">
             <Image src={binanceLogo} alt="binance logo"></Image>
           </div>
-          <div className="text-xl">
+          <div className="md:text-xl text-sm text-center md:text-left">
             Copyright 2021 by Pooky Puppy World. all right reserved
           </div>
         </div>
