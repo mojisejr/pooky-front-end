@@ -1,6 +1,6 @@
 import mintingImage from "../../images/MintingImage.PNG";
 import mintingBtnImage from "../../images/MintBtn1.PNG";
-import logoImage from "../../images/pooky-logo.png";
+import logoImage from "../../images/pooky-logo.PNG";
 import Image from "next/image";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../connector/injected";
