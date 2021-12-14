@@ -19,6 +19,7 @@ function Minting() {
   const [contract, setContract] = useState(undefined);
   const [pookyToMint, setPookyToMint] = useState(0);
   const [mintStatus, setMintStatus] = useState(mintState.READY);
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const { active, activate, library, account, chainId } = useWeb3React();
 
   //connect to metamask wallet
@@ -72,6 +73,46 @@ function Minting() {
     }
   }
 
+  //countdown timer
+  function calculateTimeLeft() {
+    let future = new Date("Dec 20, 2021 22:20:00 GMT+0700");
+    let difference = +future - +new Date();
+
+    let timeLeft = {};
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hrs: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        mins: Math.floor((difference / 1000 / 60) % 60),
+        secs: Math.floor((difference / 1000) % 60),
+      };
+    }
+    return timeLeft;
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval]) {
+      return;
+    }
+
+    timerComponents.push(
+      <span key={interval}>
+        {timeLeft[interval]} {interval}{" "}
+      </span>
+    );
+  });
+
   //check if all web3 lib is ready to use
   useEffect(() => {
     if (chainId !== undefined && library) {
@@ -91,22 +132,28 @@ function Minting() {
 
   return (
     <div className="section w-screen bg-gray-100 md:shadow-2xl flex flex-col items-center justify-center">
-      {account ? (
+      {timerComponents.length > 0 ? (
+        <Countdown timerComponents={timerComponents} />
+      ) : (
         <div>
-          {isBNB ? (
-            <MintingSection
-              account={account}
-              mintPooky={mintPooky}
-              setPookyToMint={setPookyToMint}
-              mintState={mintState}
-              mintStatus={mintStatus}
-            />
+          {account ? (
+            <div>
+              {isBNB ? (
+                <MintingSection
+                  account={account}
+                  mintPooky={mintPooky}
+                  setPookyToMint={setPookyToMint}
+                  mintState={mintState}
+                  mintStatus={mintStatus}
+                />
+              ) : (
+                <WrongChain />
+              )}
+            </div>
           ) : (
-            <WrongChain />
+            <WalletConnectSection connect={connect} />
           )}
         </div>
-      ) : (
-        <WalletConnectSection connect={connect} />
       )}
     </div>
   );
@@ -186,6 +233,26 @@ function WrongChain() {
   return (
     <div>
       your wallet is connecting to wrong chain please change and try again!
+    </div>
+  );
+}
+
+function Countdown({ timerComponents }) {
+  return (
+    <div className="flex flex-col w-full items-center gap-10">
+      <div className="text-3xl">Public sale will be live in..</div>
+      <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
+        {timerComponents}
+      </div>
+      <div className="text-sm">
+        <ul>
+          <li>* get discount from our artist forever.</li>
+          <li>* dynamic metadata NFT !</li>
+          <li>* be part of animal charity donation.</li>
+          <li>* build a strong thailand community driven NFT.</li>
+          <li>* have fun with BNB giveaway until the last minting!</li>
+        </ul>
+      </div>
     </div>
   );
 }

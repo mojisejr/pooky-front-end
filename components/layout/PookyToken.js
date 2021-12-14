@@ -1,6 +1,7 @@
 import SectionHeader from "../SectionHeader";
 import pookyGif1 from "../../images/pooky-gif1.gif";
 import Image from "next/image";
+import Link from "next/link";
 
 function PookyTokenSection() {
   return (
@@ -26,10 +27,19 @@ function PookyTokenSection() {
               random disconting rate (0 - 20%) it will be used for discount
               anything in the Pookaverse and any other event might use this too!
               only the first Generation will have this property. Generated at
-              the minting time. every 200 pookies minted will be giveaway ETH
+              the minting time. every 200 pookies minted will be giveaway BNB
               (in Matic) to one lucky adopter! that it!? No! the adopter who
-              mint the last one token number 8000 will get back 0.5ETH (in
-              Matic).
+              mint the last one token number 3000 will get back{" "}
+              <span className="text-yellow-200 md:text-2xl">4BNB</span> and the
+              last minter will get{" "}
+              <span className="text-yellow-200 md:text-2xl">10BNB!</span>{" "}
+              <span>
+                <Link href="https://discord.gg/6JvuCPst">
+                  <a className="text-pink-700" target="_blank">
+                    join our discord for more info !
+                  </a>
+                </Link>
+              </span>
             </p>
           </div>
         </div>
