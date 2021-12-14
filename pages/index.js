@@ -1,3 +1,4 @@
+import Head from "next/head";
 import HomeSection from "../components/layout/Home";
 import Minting from "../components/layout/Minting";
 import PookyRoadMapSection from "../components/layout/PookyRoadMap";
@@ -8,6 +9,9 @@ import PookyTokenSection from "../components/layout/PookyToken";
 function Home() {
   return (
     <div>
+      <Head>
+        <title>Pooky Puppy NFT</title>
+      </Head>
       <HomeSection />
       <Minting />
       <PookyStorySection />

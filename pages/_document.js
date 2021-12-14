@@ -16,7 +16,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Coiny&family=Gluten:wght@200;400;600&display=swap"
             rel="stylesheet"
           />
-          <title>Pooky Puppy NFT</title>
         </Head>
         <body>
           <Main />

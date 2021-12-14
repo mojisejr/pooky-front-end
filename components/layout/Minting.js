@@ -8,11 +8,20 @@ import { useEffect, useState } from "react";
 import { abi, address } from "../../smartcontract/abi";
 
 function Minting() {
+  const maxMintingPerTx = 3;
+  const mintState = {
+    READY: "READY",
+    MINTING: "MINTING",
+    ERROR: "ERROR",
+  };
+
   const [isBNB, setIsBNB] = useState(false);
   const [contract, setContract] = useState(undefined);
   const [pookyToMint, setPookyToMint] = useState(0);
+  const [mintStatus, setMintStatus] = useState(mintState.READY);
   const { active, activate, library, account, chainId } = useWeb3React();
 
+  //connect to metamask wallet
   async function connect() {
     try {
       await activate(injected);
@@ -21,14 +30,55 @@ function Minting() {
     }
   }
 
-  async function mintPooky() {}
+  //get pooky price from smart contract
+  async function getPookyPrice() {
+    const price = await contract.methods.getPrice().call();
+    return price;
+  }
 
+  //smart contract internal mint function
+  async function _mintPooky(BNB, num) {
+    const tx = await contract.methods.getPooky(num).send({
+      from: account,
+      value: library.utils.toWei(BNB.toString(), "wei"),
+    });
+    return tx.status;
+  }
+
+  //public mint function
+  async function mintPooky() {
+    if (pookyToMint <= 0) {
+      alert("how many pooky do you want to mint !?");
+      return;
+    }
+    const price = await getPookyPrice();
+    if (mintStatus == mintState.READY) {
+      if (pookyToMint > maxMintingPerTx) {
+        alert("only 3 token per transaction!");
+      } else {
+        const totalPrice = price * +pookyToMint;
+        setMintStatus(mintState.MINTING);
+        try {
+          const result = await _mintPooky(totalPrice, pookyToMint);
+          if (!result) {
+            setMintStatus(mintState.ERROR);
+            setPookyToMint(null);
+          }
+          setMintStatus(mintState.READY);
+        } catch (e) {
+          setMintStatus(mintState.READY);
+        }
+      }
+    }
+  }
+
+  //check if all web3 lib is ready to use
   useEffect(() => {
     if (chainId !== undefined && library) {
       if (chainId === 97 || chainId === 56) {
         setIsBNB(true);
-        // const contract = new library.eth.Contract(abi, address);
-        // setContract(contract);
+        const contract = new library.eth.Contract(abi, address);
+        setContract(contract);
       } else {
         setIsBNB(false);
         setContract(undefined);
@@ -48,6 +98,8 @@ function Minting() {
               account={account}
               mintPooky={mintPooky}
               setPookyToMint={setPookyToMint}
+              mintState={mintState}
+              mintStatus={mintStatus}
             />
           ) : (
             <WrongChain />
@@ -82,7 +134,13 @@ function WalletConnectSection({ connect }) {
   );
 }
 
-function MintingSection({ account, mintPooky, setPookyToMint }) {
+function MintingSection({
+  account,
+  mintPooky,
+  setPookyToMint,
+  mintStatus,
+  mintState,
+}) {
   return (
     <div>
       <div className="flex flex-col items-center gap-2">
@@ -101,19 +159,23 @@ function MintingSection({ account, mintPooky, setPookyToMint }) {
           />
         </div>
         <div className="mint-box flex flex-col p-5 gap-10 justify-center items-center">
-          {/* <input
+          <input
             className="p-5 bg-blue-100 text-2xl text-center rounded-2xl border-b-4 border-pink-200"
             type="number"
             placeholder="max 10 pooky"
             onChange={(e) => setPookyToMint(e.target.value)}
             max={10}
-          ></input> */}
-          <button>
-            <div className="w-72 text-4xl">
-              {/* <Image src={mintingBtnImage} alt="minting btn" /> */}
-              Coming Soon... !!
-            </div>
-          </button>
+          ></input>
+          {mintStatus == mintState.READY ? (
+            <button onClick={mintPooky}>
+              <div className="w-72">
+                <Image src={mintingBtnImage} alt="minting btn" />
+                {/* Coming Soon... !! */}
+              </div>
+            </button>
+          ) : (
+            <div className="text-4xl animate-bounce">Loading</div>
+          )}
         </div>
       </div>
     </div>
