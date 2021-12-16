@@ -1,7 +1,7 @@
 import Image from "next/image";
 function PookyTeamCard({ image, name, profile }) {
   return (
-    <div className="card flex flex-col justify-center items-center p-10 md:bg-pink-100 md:bg-opacity-40">
+    <div className="card flex flex-col justify-center items-center p-10 md:bg-pink-100 md:bg-opacity-40 md:backdrop-blur-lg">
       <div className="w-24 md:w-full md:text-center">
         <Image
           className="rounded-full"
