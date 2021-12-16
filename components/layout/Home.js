@@ -1,16 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
-import binanceLogo from "../../images/binancelogo.png";
-import pookyLogo from "../../images/pookyplanet.PNG";
-import nftrade from "../../images/nftrade.png";
+import pookyLogo from "../../images/Logo.png";
+import planet1 from "../../images/aMainPicture1.png";
+import stars from "../../images/bgStar.png";
+import Menu from "../Menu";
 
 function HomeSection() {
   return (
     <div className="home-section section w-screen text-white md:rounded-t-2xl md:shadow-2xl">
+      <div className="absolute">
+        <Image src={stars} alt="stars" />
+      </div>
       <div className="header-box flex md:justify-between items-center pt-6 flex-col md:flex-row">
-        <div className="logo-box p-logo md:flex md:flex-col hidden">
-          <div className="md:text-5xl text-3xl font-bold">Pooky</div>
-          <div className="md:text-xl text-sm">Puppy World</div>
+        <div className="logo-box w-80 md:flex md:flex-col hidden p-5">
+          <Image src={pookyLogo} alt="pooky logo" />
         </div>
         <div className="logo-box flex flex-col items-center md:hidden">
           <div className="rounded-full">
@@ -21,37 +23,13 @@ function HomeSection() {
             <div className="md:text-xl text-sm">Puppy World</div>
           </div>
         </div>
-
-        <div className="menu-box flex md:flex-row md:items-center flex-col text-xl gap-3 md:mr-10 md:p-5 p-10 mt-5 bg-gray-300 bg-opacity-80 rounded-xl md:text-white text-black">
-          <Link href="https://discord.gg/6JvuCPst">
-            <a
-              className="menu-item discord hover:text-purple-500"
-              target="_blank"
-            >
-              discord
-            </a>
-          </Link>
-          <Link href="https://twitter.com/PookyPuppy">
-            <a
-              className="menu-item twitter hover:text-blue-400"
-              target="_blank"
-            >
-              twitter
-            </a>
-          </Link>
-          <Link href="#">
-            <a className="menu-item utility hover:text-pink-600">utility</a>
-          </Link>
-          <Link href="https://nftrade.com/marketplace">
-            <a className="menu-item nftrade" target="_blank">
-              <div className="w-24">
-                <Image src={nftrade} alt="nftrade logo" />
-              </div>
-            </a>
-          </Link>
-          <div className="w-24">
-            <Image src={binanceLogo} alt="binance logo" />
-          </div>
+        <div className="z-10">
+          <Menu />
+        </div>
+      </div>
+      <div className="home-body-container flex justify-center">
+        <div className="max-w-xl">
+          <Image src={planet1} alt="planet" />
         </div>
       </div>
     </div>

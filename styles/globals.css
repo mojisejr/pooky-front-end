@@ -21,23 +21,31 @@
 }
 
 .home-section {
-  background-image: url(../images/bg1-1.JPG);
+  background-image: url(../images/Bg01.JPG);
+}
+
+.minting-section {
+  background-image: url(../images/Bg02.JPG);
 }
 
 .pooky-story-section {
-  background-image: url(../images/bg2.JPG);
+  background-image: url(../images/Bg03.JPG);
 }
 
 .pooky-token-section {
-  background-image: url(../images/bg3.JPG);
+  background-image: url(../images/Bg04.JPG);
 }
 
 .pooky-roadmap-section {
-  background-image: url(../images/bg4.JPG);
+  background-image: url(../images/Bg05.JPG);
 }
 
 .pooky-team-section {
-  background-image: url(../images//bg5.JPG);
+  background-image: url(../images/Bg06.JPG);
+}
+
+.pooky-utility-page {
+  background-image: url(../images/Bg07.JPG);
 }
 
 .p-logo {

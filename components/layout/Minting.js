@@ -1,6 +1,10 @@
 import mintingImage from "../../images/MintingImage.PNG";
 import mintingBtnImage from "../../images/MintBtn1.PNG";
 import logoImage from "../../images/pooky-logo.PNG";
+import rainbow2 from "../../images/Rainbow2.png";
+import cloud1 from "../../images/Cloud2.png";
+import cloud2 from "../../images/Cloud1.png";
+import loadingImage from "../../images/Loading.gif";
 import Image from "next/image";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../connector/injected";
@@ -131,7 +135,7 @@ function Minting() {
   }, [active, chainId, library]);
 
   return (
-    <div className="section w-screen bg-gray-100 md:shadow-2xl flex flex-col items-center justify-center">
+    <div className="section minting-section w-screen bg-gray-100 md:shadow-2xl flex flex-col items-center justify-center">
       {timerComponents.length > 0 ? (
         <Countdown timerComponents={timerComponents} />
       ) : (
@@ -239,7 +243,22 @@ function WrongChain() {
 
 function Countdown({ timerComponents }) {
   return (
-    <div className="flex flex-col w-full items-center gap-10">
+    <div className="flex flex-col w-full items-center gap-10 relative">
+      <div className="absolute w-72 -top-36 left-28">
+        <Image src={cloud1} alt="particle" />
+      </div>
+      <div className="absolute w-72 top-28 left-10">
+        <Image src={cloud2} alt="particle" />
+      </div>
+      <div className="absolute w-72 right-9">
+        <Image src={cloud2} alt="particle" />
+      </div>
+      <div
+        className="absolute w-48 -top-28 right-52"
+        style={{ transform: "rotate(-7deg)" }}
+      >
+        <Image src={rainbow2} alt="particle" />
+      </div>
       <div className="text-3xl">Public sale will be live in..</div>
       <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
         {timerComponents}

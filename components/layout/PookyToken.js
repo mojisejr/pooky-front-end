@@ -1,12 +1,20 @@
 import SectionHeader from "../SectionHeader";
 import pookyGif1 from "../../images/pooky-gif1.gif";
+import rainbow from "../../images/Rainbow2.png";
+import cloud1 from "../../images/Cloud1.png";
 import Image from "next/image";
 import Link from "next/link";
 
 function PookyTokenSection() {
   return (
     <div>
-      <div className="pooky-token-section section w-screen shadow-2xl text-white">
+      <div className="relative pooky-token-section section w-screen shadow-2xl text-gray-800">
+        <div className="absolute top-40 left-10 w-72 hidden md:block">
+          <Image src={rainbow} alt="rainbow" />
+        </div>
+        <div className="absolute w-72 top-40 right-10 hidden md:block">
+          <Image src={cloud1} alt="cloud" />
+        </div>
         <SectionHeader text={"Pooky Puppy NFT"} />
         <div className="token-container flex flex-col items-center md:pl-40 md:pr-40 pt-5">
           <div className="token-image w-72">
@@ -16,7 +24,7 @@ function PookyTokenSection() {
               alt="pooky puppy nft"
             ></Image>
           </div>
-          <div className="token-content p-5 md:text-xl text-xs">
+          <div className="token-content p-5 md:text-lg text-xs">
             <p>
               Pooky Puppy NFT is the 3000 unique cuties Pomparanian in the
               world. you can name her the way you like with the suffix [.pooky]

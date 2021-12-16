@@ -1,15 +1,28 @@
 import SectionHeader from "../SectionHeader";
-import team1 from "../../images/1.png";
-import team2 from "../../images/2.png";
+import team1 from "../../images/Feem.jpg";
+import team2 from "../../images/Min.jpg";
 import nftrade from "../../images/nftrade.png";
 import binanceLogo from "../../images/binancelogo.png";
+import rainbow2 from "../../images/Rainbow2.png";
 import Image from "next/image";
 import PookyTeamCard from "../PookyTeamCard";
 
 function PookyTeamSection() {
   return (
     <div>
-      <div className="pooky-team-section section w-screen shadow-2xl text-white rounded-b-2xl flex flex-col">
+      <div className="pooky-team-section section w-screen shadow-2xl text-gray-800 rounded-b-2xl flex flex-col relative z-10">
+        <div
+          className="absolute w-72 right-20 top-10"
+          style={{ zIndex: "-1", transform: "rotate(-10deg)" }}
+        >
+          <Image src={rainbow2} alt="rainbow" />
+        </div>
+        <div
+          className="absolute w-72 bottom-20"
+          style={{ zIndex: "-1", transform: "rotate(10deg)" }}
+        >
+          <Image src={rainbow2} alt="rainbow" />
+        </div>
         <SectionHeader text={"Pooky Puppy Team"} />
         <div className="grid md:grid-cols-2 grid-flow-row  md:ml-40 md:mr-40 rounded-2xl overflow-hidden md:shadow-2xl md:mt-20">
           <PookyTeamCard
