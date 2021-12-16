@@ -1,9 +1,9 @@
 import SectionHeader from "../SectionHeader";
-import team1 from "../../images/Feem.jpg";
-import team2 from "../../images/Min.jpg";
+import team1 from "../../images/Feem.JPG";
+import team2 from "../../images/Min.JPG";
 import nftrade from "../../images/nftrade.png";
 import binanceLogo from "../../images/binancelogo.png";
-import rainbow2 from "../../images/Rainbow2.png";
+import rainbow2 from "../../images/Rainbow2.PNG";
 import Image from "next/image";
 import PookyTeamCard from "../PookyTeamCard";
 

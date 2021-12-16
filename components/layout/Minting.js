@@ -1,10 +1,9 @@
 import mintingImage from "../../images/MintingImage.PNG";
 import mintingBtnImage from "../../images/MintBtn1.PNG";
 import logoImage from "../../images/pooky-logo.PNG";
-import rainbow2 from "../../images/Rainbow2.png";
-import cloud1 from "../../images/Cloud2.png";
-import cloud2 from "../../images/Cloud1.png";
-import loadingImage from "../../images/Loading.gif";
+import rainbow2 from "../../images/Rainbow2.PNG";
+import cloud1 from "../../images/Cloud2.PNG";
+import cloud2 from "../../images/Cloud1.PNG";
 import Image from "next/image";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../connector/injected";
