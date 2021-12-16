@@ -1,7 +1,7 @@
 import SectionHeader from "../SectionHeader";
 import pookyGif1 from "../../images/pooky-gif1.gif";
-import rainbow from "../../images/Rainbow2.png";
-import cloud1 from "../../images/Cloud1.png";
+import rainbow from "../../images/Rainbow2.PNG";
+import cloud1 from "../../images/Cloud1.PNG";
 import Image from "next/image";
 import Link from "next/link";
 
