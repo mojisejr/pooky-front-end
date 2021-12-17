@@ -4,7 +4,7 @@ import cloud1 from "../images/Cloud2.PNG";
 import cloud2 from "../images/Cloud1.PNG";
 function Countdown({ timerComponents }) {
   return (
-    <div className="flex flex-col w-full items-center gap-10 relative">
+    <div className="flex flex-col w-full items-center gap-10 relative pt-20">
       <div className="absolute w-72 -top-36 left-28">
         <Image src={cloud1} alt="particle" />
       </div>
