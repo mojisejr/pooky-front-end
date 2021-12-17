@@ -6,7 +6,7 @@ import Menu from "../Menu";
 
 function HomeSection() {
   return (
-    <div className="home-section section w-screen text-white md:rounded-t-2xl md:shadow-2xl">
+    <div className="home-section section w-screen text-white md:rounded-t-2xl">
       <div className="absolute">
         <Image src={stars} alt="stars" />
       </div>

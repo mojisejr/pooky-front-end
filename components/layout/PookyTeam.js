@@ -10,7 +10,7 @@ import PookyTeamCard from "../PookyTeamCard";
 function PookyTeamSection() {
   return (
     <div>
-      <div className="pooky-team-section section w-screen shadow-2xl text-gray-800 rounded-b-2xl flex flex-col relative z-10">
+      <div className="pooky-team-section section w-screen text-gray-800 rounded-b-2xl flex flex-col relative z-10">
         <div
           className="absolute w-72 right-20 top-10"
           style={{ zIndex: "-1", transform: "rotate(-10deg)" }}
@@ -29,7 +29,7 @@ function PookyTeamSection() {
             image={team1}
             name="Ola.pooky"
             profile={
-              "Daytime farmer, Nighttime developer, that everyone call her and yes! she is the dog lover"
+              "Daytime farmer, Nighttime developer, that everyone call him and yess! he is the dog lover"
             }
           />
           <PookyTeamCard

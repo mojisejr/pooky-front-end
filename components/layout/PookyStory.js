@@ -8,7 +8,7 @@ import Image from "next/image";
 function PookyStorySection() {
   return (
     <div>
-      <div className="pooky-story-section section w-screen md:shadow-2xl md:pr-40 md:pl-40 text-white">
+      <div className="pooky-story-section section w-screen md:pr-40 md:pl-40 text-white">
         <SectionHeader text={"Pooky puppy story"} />
         <div className="md:hidden flex h-24 mt-4">
           <Image src={puppy1} alt="pooky image" width={150} height={150} />

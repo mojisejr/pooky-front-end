@@ -2,7 +2,7 @@ import SectionHeader from "../SectionHeader";
 function PookyRoadMapSection() {
   return (
     <div>
-      <div className="relative pooky-roadmap-section section w-screen shadow-2xl text-pink-400">
+      <div className="relative pooky-roadmap-section section w-screen text-pink-400">
         <SectionHeader text={"Road Map to Pookaverse"} />
         <div className="roadmap-container flex justify-center md:pt-10 p-5">
           <ul className="md:text-xl md:pr-40 md:pl-40 md:space-y-10">

@@ -1,10 +1,8 @@
-import mintingImage from "../../images/MintingImage.PNG";
-import mintingBtnImage from "../../images/MintBtn1.PNG";
 import logoImage from "../../images/pooky-logo.PNG";
-import rainbow2 from "../../images/Rainbow2.PNG";
-import cloud1 from "../../images/Cloud2.PNG";
-import cloud2 from "../../images/Cloud1.PNG";
 import Image from "next/image";
+import Countdown from "../Countdown";
+import WrongChain from "../WrongChain";
+import MintingSection from "../MintingSection";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "../../connector/injected";
 import { useEffect, useState } from "react";
@@ -78,7 +76,8 @@ function Minting() {
 
   //countdown timer
   function calculateTimeLeft() {
-    let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
+    // let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
+    let future = new Date("Dec 1, 2021 08:30:00 GMT+0700");
     let difference = +future - +new Date();
 
     let timeLeft = {};
@@ -134,7 +133,7 @@ function Minting() {
   }, [active, chainId, library]);
 
   return (
-    <div className="section minting-section w-screen bg-gray-100 md:shadow-2xl flex flex-col items-center justify-center">
+    <div className="section minting-section w-screen bg-gray-100 flex flex-col items-center pt-20">
       {timerComponents.length > 0 ? (
         <Countdown timerComponents={timerComponents} />
       ) : (
@@ -179,97 +178,6 @@ function WalletConnectSection({ connect }) {
       </button>
       <div>
         please check if you are connecting with Binance Smart Chain Mainnet.
-      </div>
-    </div>
-  );
-}
-
-function MintingSection({
-  account,
-  mintPooky,
-  setPookyToMint,
-  mintStatus,
-  mintState,
-}) {
-  return (
-    <div>
-      <div className="flex flex-col items-center gap-2">
-        <h1 className="mint-title text-4xl text-blue-900 pt-15 text-center">
-          Mint Pooky Puppy
-        </h1>
-        <div className="text-xl text-blue-400">connected to: {account}</div>
-      </div>
-      <div className="mint-wrapper flex items-center justify-center gap-10 p-5">
-        <div className="mint-image-box">
-          <Image
-            src={mintingImage}
-            alt="Minting Image"
-            width={450}
-            height={450}
-          />
-        </div>
-        <div className="mint-box flex flex-col p-5 gap-10 justify-center items-center">
-          <input
-            className="p-5 bg-blue-100 text-2xl text-center rounded-2xl border-b-4 border-pink-200"
-            type="number"
-            placeholder="max 10 pooky"
-            onChange={(e) => setPookyToMint(e.target.value)}
-            max={10}
-          ></input>
-          {mintStatus == mintState.READY ? (
-            <button onClick={mintPooky}>
-              <div className="w-72">
-                <Image src={mintingBtnImage} alt="minting btn" />
-                {/* Coming Soon... !! */}
-              </div>
-            </button>
-          ) : (
-            <div className="text-4xl animate-bounce">Loading</div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function WrongChain() {
-  return (
-    <div>
-      your wallet is connecting to wrong chain please change and try again!
-    </div>
-  );
-}
-
-function Countdown({ timerComponents }) {
-  return (
-    <div className="flex flex-col w-full items-center gap-10 relative">
-      <div className="absolute w-72 -top-36 left-28">
-        <Image src={cloud1} alt="particle" />
-      </div>
-      <div className="absolute w-72 top-28 left-10">
-        <Image src={cloud2} alt="particle" />
-      </div>
-      <div className="absolute w-72 right-9">
-        <Image src={cloud2} alt="particle" />
-      </div>
-      <div
-        className="absolute w-48 -top-28 right-52"
-        style={{ transform: "rotate(-7deg)" }}
-      >
-        <Image src={rainbow2} alt="particle" />
-      </div>
-      <div className="text-3xl">Public sale will be live in..</div>
-      <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
-        {timerComponents}
-      </div>
-      <div className="text-sm">
-        <ul>
-          <li>* get discount from our artist forever.</li>
-          <li>* dynamic metadata NFT !</li>
-          <li>* be part of animal charity donation.</li>
-          <li>* build a strong thailand community driven NFT.</li>
-          <li>* have fun with BNB giveaway until the last minting!</li>
-        </ul>
       </div>
     </div>
   );

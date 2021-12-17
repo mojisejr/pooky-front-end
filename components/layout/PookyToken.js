@@ -8,7 +8,7 @@ import Link from "next/link";
 function PookyTokenSection() {
   return (
     <div>
-      <div className="relative pooky-token-section section w-screen shadow-2xl text-gray-800">
+      <div className="relative pooky-token-section section w-screen text-gray-800">
         <div className="absolute top-40 left-10 w-72 hidden md:block">
           <Image src={rainbow} alt="rainbow" />
         </div>
