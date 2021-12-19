@@ -6,7 +6,7 @@ import binanceLogo from "../images/binancelogo.png";
 function Menu() {
   return (
     <div className="menu-box flex md:flex-row md:items-center flex-col text-xl gap-3 md:mr-10 md:p-5 p-10 bg-gray-300 bg-opacity-80 rounded-xl md:text-white text-black">
-      <Link href="https://discord.gg/6JvuCPst">
+      <Link href="https://discord.gg/MBmCRCKpYB">
         <a className="menu-item discord hover:text-purple-500" target="_blank">
           discord
         </a>
