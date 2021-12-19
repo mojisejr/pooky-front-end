@@ -6,7 +6,7 @@ import Menu from "../Menu";
 
 function HomeSection() {
   return (
-    <div className="home-section section w-screen text-white md:rounded-t-2xl">
+    <div className="home-section section w-screen text-white md:rounded-t-2xl md:block flex flex-col justify-center">
       <div className="absolute">
         <Image src={stars} alt="stars" />
       </div>
@@ -14,20 +14,16 @@ function HomeSection() {
         <div className="logo-box w-80 md:flex md:flex-col hidden p-5">
           <Image src={pookyLogo} alt="pooky logo" />
         </div>
-        <div className="logo-box flex flex-col items-center md:hidden">
-          <div className="rounded-full">
-            <Image src={pookyLogo} alt="small logo" width={150} height={150} />
-          </div>
-          <div>
-            <div className="md:text-5xl text-3xl font-bold">Pooky</div>
-            <div className="md:text-xl text-sm">Puppy World</div>
+        <div className="logo-box flex flex-col items-center justify-center md:hidden">
+          <div className="w-72">
+            <Image src={pookyLogo} alt="pooky logo" />
           </div>
         </div>
         <div className="z-10">
           <Menu />
         </div>
       </div>
-      <div className="home-body-container flex justify-center">
+      <div className="home-body-container md:flex justify-center hidden">
         <div className="max-w-xl">
           <Image src={planet1} alt="planet" />
         </div>

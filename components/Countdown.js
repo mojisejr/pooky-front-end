@@ -20,19 +20,21 @@ function Countdown({ timerComponents }) {
       >
         <Image src={rainbow2} alt="particle" />
       </div>
-      <div className="text-3xl">Public sale will be live in..</div>
-      <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
-        {/* {timerComponents} */}
-        <div>Coming soon!</div>
-      </div>
-      <div className="text-sm">
-        <ul>
-          <li>* get discount from our artist forever.</li>
-          <li>* dynamic metadata NFT !</li>
-          <li>* be part of animal charity donation.</li>
-          <li>* build a strong thailand community driven NFT.</li>
-          <li>* have fun with BNB giveaway until the last minting!</li>
-        </ul>
+      <div className="z-10 md:flex md:flex-col md:gap-10">
+        <div className="text-3xl">Public sale will be live in..</div>
+        <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
+          {/* {timerComponents} */}
+          <div>Coming soon!</div>
+        </div>
+        <div className="text-sm">
+          <ul>
+            <li>* get discount from our artist forever.</li>
+            <li>* dynamic metadata NFT !</li>
+            <li>* be part of animal charity donation.</li>
+            <li>* build a strong thailand community driven NFT.</li>
+            <li>* have fun with BNB giveaway until the last minting!</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
