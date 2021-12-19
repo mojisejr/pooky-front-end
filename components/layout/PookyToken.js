@@ -26,13 +26,13 @@ function PookyTokenSection() {
           </div>
           <div className="token-content p-5 md:text-lg text-xs">
             <p>
-              Pooky Puppy NFT is the 3000 unique cuties Pomparanian in the
+              Pooky Puppy NFT is the 3000 unique adorable Pomparanian in the
               world. you can name her the way you like with the suffix [.pooky]
               and your puppy name will change in the opensea token name and
               description as the dynamic metadata! sound coool right!? and it
               get updates on the Opensea!, so hold her tight and make her your
               most favorite NFT in your collection. because she comes with
-              random disconting rate (0 - 20%) it will be used for discount
+              random discont rate (5 - 20%) it will be used for discount
               anything in the Pookaverse and any other event might use this too!
               only the first Generation will have this property. Generated at
               the minting time. every 200 pookies minted will be giveaway BNB
