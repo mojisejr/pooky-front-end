@@ -22,7 +22,8 @@ function Countdown({ timerComponents }) {
       </div>
       <div className="text-3xl">Public sale will be live in..</div>
       <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
-        {timerComponents}
+        {/* {timerComponents} */}
+        <div>Coming soon!</div>
       </div>
       <div className="text-sm">
         <ul>

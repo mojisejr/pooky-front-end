@@ -17,7 +17,7 @@ function Menu() {
         </a>
       </Link>
       <Link href="#">
-        <a className="menu-item utility hover:text-pink-600">utility</a>
+        <a className="menu-item utility hover:text-pink-600">your NFT</a>
       </Link>
       <Link href="https://nftrade.com/marketplace">
         <a className="menu-item nftrade" target="_blank">

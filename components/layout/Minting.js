@@ -76,8 +76,8 @@ function Minting() {
 
   //countdown timer
   function calculateTimeLeft() {
-    let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
-    // let future = new Date("Dec 17, 2021 15:42:00 GMT+0700");
+    // let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
+    let future = new Date("Dec 31, 2021 15:42:00 GMT+0700");
     let difference = +future - +new Date();
 
     let timeLeft = {};
@@ -153,7 +153,8 @@ function Minting() {
               )}
             </div>
           ) : (
-            <WalletConnectSection connect={connect} />
+            // <WalletConnectSection connect={connect} />
+            <div className="text-6xl">Comming soon..</div>
           )}
         </div>
       )}
