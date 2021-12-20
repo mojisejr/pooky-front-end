@@ -11,6 +11,9 @@ function MetadataPage() {
   const { authenticate, enableWeb3, account, chainId } = useMoralis();
   const { Web3API, native } = useMoralisWeb3Api();
   const [myPooky, setMyPooky] = useState([]);
+  const [selectedPooky, setSelectedPooky] = useState({});
+  const [newName, setNewName] = useState(null);
+  const [newDesc, setNewDesc] = useState(null);
 
   async function connect() {
     try {
@@ -20,6 +23,10 @@ function MetadataPage() {
       throw new Error(e);
     }
   }
+
+  useEffect(() => {
+    console.log(selectedPooky);
+  }, [selectedPooky]);
 
   useEffect(() => {
     if (account) {
@@ -44,14 +51,13 @@ function MetadataPage() {
     });
 
     results = await Promise.all(results);
-    console.log(results);
     setMyPooky(results);
   }
 
   async function getPookyMetadata(tokenId) {
     try {
       const response = await native.runContractFunction({
-        chain: chainId,
+        chain: "bsc testnet",
         address,
         abi,
         function_name: "pookyInfo",
@@ -72,6 +78,7 @@ function MetadataPage() {
         function_name: "setPookyMetadata",
         params: { tokenId: tokenId, _newName: name, _newDescription: desc },
       });
+      console.log(response);
       return true;
     } catch (e) {
       return false;
@@ -79,7 +86,7 @@ function MetadataPage() {
   }
 
   return (
-    <div className="w-screen bg-gradient-to-tr from-blue-200 to-pink-200 pb-10">
+    <div className="w-screen h-screen bg-gradient-to-tr from-blue-200 to-pink-200 pb-10 main-container flex flex-col">
       <Head>
         <title>Your Pooky</title>
       </Head>
@@ -91,23 +98,67 @@ function MetadataPage() {
           <Menu />
         </div>
       </div>
-      <div className="w-screen">
-        <div className="grid grid-cols-3 mr-40 ml-40 gap-20">
-          {myPooky.length > 0 ? (
-            myPooky.map((pooky) => (
-              <div key={pooky.tokenId}>
-                <div className="p-10 box-shadow-2xl bg-gray-200 bg-opacity-40 shadow-2xl rounded-xl">
-                  <div>id: {pooky.tokenId}</div>
-                  <div>name: {pooky.pookyName}</div>
-                  <div>desc: {pooky.pookyDesc}</div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div>loading..</div>
-          )}
+      <div className="self-center">
+        {WalletConnectButton({ connect })}
+        <div className="m-auto bg-gray-200 p-10 rounded-2xl shadow-2xl bg-opacity-60">
+          {PookySelector({ myPooky, setSelectedPooky: setSelectedPooky })}
+          <div className="flex flex-col justify-center items-center gap-2">
+            <input
+              type="text"
+              value={selectedPooky.pookyName}
+              onChange={(e) => setNewName(e.target.value)}
+            />
+            <textarea
+              value={selectedPooky.pookyDesc}
+              onChange={(e) => setNewDesc(e.target.value)}
+            />
+          </div>
+          <button
+            onClick={() => setMetadata(selectedPooky.tokenId, newName, newDesc)}
+            className="bg-red-200"
+          >
+            updateMetadata
+          </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function PookySelector({ myPooky = [], setSelectedPooky }) {
+  return (
+    <>
+      <select
+        onChange={(e) => {
+          if (e.target.value == "") {
+            return;
+          }
+          const parsedData = myPooky.find(
+            (pooky) => pooky.tokenId == e.target.value
+          );
+          setSelectedPooky(parsedData);
+        }}
+      >
+        <option value="">- select your pooky -</option>
+        {myPooky.map((pooky) => (
+          <option key={pooky.tokenId} value={pooky.tokenId}>
+            #{pooky.tokenId} | {pooky.pookyName}
+          </option>
+        ))}
+      </select>
+    </>
+  );
+}
+
+function WalletConnectButton({ connect }) {
+  return (
+    <div className="wallet-conntect-container">
+      <button
+        onClick={connect}
+        className="connect-wallet-btn text-4xl bg-gray-200 bg-opacity-40 backdrop-blur-2 pt-5 pb-5 pl-10 pr-10 rounded-xl shadow-sm hover:shadow-2xl hover:text-pink-500 transition-all"
+      >
+        Connect Wallet
+      </button>
     </div>
   );
 }

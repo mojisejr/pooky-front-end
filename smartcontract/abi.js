@@ -411,7 +411,7 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "pookyInfo",
     outputs: [
       { internalType: "string", name: "name", type: "string" },
