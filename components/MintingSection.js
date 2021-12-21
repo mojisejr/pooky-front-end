@@ -3,7 +3,7 @@ import mintingImage from "../images/Placeholder.gif";
 import cloud1 from "../images/Cloud1.PNG";
 import cloud2 from "../images/Cloud2.PNG";
 import star from "../images/Star1.PNG";
-import loading from "../images/Loading.GIF";
+import loading from "../images/Loading.gif";
 function MintingSection({
   account,
   mintPooky,
