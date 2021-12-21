@@ -2,7 +2,6 @@ export const abi = [
   {
     inputs: [
       { internalType: "string", name: "seed", type: "string" },
-      { internalType: "string", name: "baseTokenURI", type: "string" },
       { internalType: "address", name: "owner1", type: "address" },
       { internalType: "address", name: "owner2", type: "address" },
       { internalType: "address", name: "donate", type: "address" },
@@ -262,34 +261,6 @@ export const abi = [
     type: "event",
   },
   {
-    inputs: [],
-    name: "_currentTokenId",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "_isPromotion",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "_isReveal",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "_paused",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       { internalType: "address", name: "to", type: "address" },
       { internalType: "uint256", name: "tokenId", type: "uint256" },
@@ -307,13 +278,10 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "string", name: "_str1", type: "string" },
-      { internalType: "string", name: "_str2", type: "string" },
-    ],
-    name: "compareString",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "pure",
+    inputs: [],
+    name: "currentTokenId",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -338,10 +306,40 @@ export const abi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "uint256", name: "_tokenId", type: "uint256" }],
+    name: "getPookyInfo",
+    outputs: [
+      {
+        components: [
+          { internalType: "string", name: "name", type: "string" },
+          { internalType: "uint256", name: "birthdate", type: "uint256" },
+          { internalType: "uint256", name: "discount", type: "uint256" },
+          { internalType: "string", name: "description", type: "string" },
+          { internalType: "uint256", name: "str", type: "uint256" },
+          { internalType: "uint256", name: "vit", type: "uint256" },
+          { internalType: "uint256", name: "agi", type: "uint256" },
+          { internalType: "uint256", name: "wis", type: "uint256" },
+        ],
+        internalType: "struct PookyPuppy.PookyInfo",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "getPrice",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    name: "getStatusForPooky",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -356,8 +354,22 @@ export const abi = [
   },
   {
     inputs: [],
-    name: "lastGiveawayToken",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "isPaused",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "isPromotion",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "isReveal",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "view",
     type: "function",
   },
@@ -377,13 +389,6 @@ export const abi = [
   },
   {
     inputs: [],
-    name: "nextGiveawayToken",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "owner",
     outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
@@ -393,32 +398,6 @@ export const abi = [
     inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "ownerOf",
     outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner_1",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner_2",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "pookyInfo",
-    outputs: [
-      { internalType: "string", name: "name", type: "string" },
-      { internalType: "uint256", name: "birthdate", type: "uint256" },
-      { internalType: "uint256", name: "discount", type: "uint256" },
-      { internalType: "string", name: "description", type: "string" },
-    ],
     stateMutability: "view",
     type: "function",
   },
@@ -470,6 +449,17 @@ export const abi = [
     type: "function",
   },
   {
+    inputs: [
+      { internalType: "address", name: "owner_1", type: "address" },
+      { internalType: "address", name: "owner_2", type: "address" },
+      { internalType: "address", name: "newDonation", type: "address" },
+    ],
+    name: "setOwnerAndDonation",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "bool", name: "val", type: "bool" }],
     name: "setPause",
     outputs: [],
@@ -479,18 +469,8 @@ export const abi = [
   {
     inputs: [
       { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "string", name: "_newDescription", type: "string" },
-    ],
-    name: "setPookyDescription",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "string", name: "_newName", type: "string" },
-      { internalType: "string", name: "_newDescription", type: "string" },
+      { internalType: "string", name: "newName", type: "string" },
+      { internalType: "string", name: "newDescription", type: "string" },
     ],
     name: "setPookyMetadata",
     outputs: [],
@@ -498,20 +478,38 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "string", name: "_newName", type: "string" },
-    ],
-    name: "setPookyName",
+    inputs: [{ internalType: "bool", name: "val", type: "bool" }],
+    name: "setPromotion",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "bool", name: "_val", type: "bool" }],
-    name: "setPromotion",
+    inputs: [{ internalType: "bool", name: "val", type: "bool" }],
+    name: "setReveal",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "timestamp", type: "uint256" }],
+    name: "setStartTime",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "timestamp", type: "uint256" }],
+    name: "setUnlockTime",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "startTime",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -546,7 +544,7 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "_tokenId", type: "uint256" }],
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "tokenURI",
     outputs: [{ internalType: "string", name: "", type: "string" }],
     stateMutability: "view",
@@ -578,7 +576,14 @@ export const abi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "_owner", type: "address" }],
+    inputs: [],
+    name: "unlocktime",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "owner", type: "address" }],
     name: "walletOfOwner",
     outputs: [{ internalType: "uint256[]", name: "", type: "uint256[]" }],
     stateMutability: "view",
@@ -593,4 +598,4 @@ export const abi = [
   },
 ];
 
-export const address = "0x425E5F8269612578B24B12499F71B9A843Cc3C44";
+export const address = "0x3cA7AfA1d2715E1F4bD8a95b7B2780E752855028";

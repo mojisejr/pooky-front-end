@@ -26,20 +26,20 @@ function PookyTokenSection() {
           </div>
           <div className="token-content p-5 md:text-lg text-xs">
             <p>
-              Pooky Puppy NFT is the 3000 unique adorable Pomparanian in the
-              world. you can name her the way you like with the suffix [.pooky]
-              and your puppy name will change in the opensea token name and
-              description as the dynamic metadata! sound coool right!? and it
-              get updates on the Opensea!, so hold her tight and make her your
-              most favorite NFT in your collection. because she comes with
-              random discont rate (5 - 20%) it will be used for discount
-              anything in the Pookaverse and any other event might use this too!
-              only the first Generation will have this property. Generated at
-              the minting time. every 200 pookies minted will be giveaway BNB
-              (in Matic) to one lucky adopter! that it!? No! the adopter who
-              mint the last one token number 3000 will get back{" "}
-              <span className="text-yellow-200 md:text-2xl">4BNB</span> and the
-              last minter will get{" "}
+              Pooky Puppy NFT is the 3000 unique adorable pomeranian metaverse.
+              you can name her the way you like with the suffix [.pooky] and
+              your puppy name will change at the NFTRADE. token name and
+              description as the dynamic metadata! sound coool, and it get
+              updates on the NFTRADE! so holder will get the random on-chain
+              discount rate (upto 20%) each pooky nft will have different
+              discount rate (the more % the more rarity) it will be used for
+              discount anything in the Pookaverse (future project). only this
+              generation will have this property. Discount rate will be
+              generated at the mint time. for the fast giveaway. So every 200
+              pookies minted will be giveaway{" "}
+              <span className="text-yellow-200 md:text-2xl">4BNB</span> to one
+              lucky minter! that it!? No! the minter who mint the last one at
+              token number 3000 will get{" "}
               <span className="text-yellow-200 md:text-2xl">10BNB!</span>{" "}
               <span>
                 <Link href="https://discord.gg/6JvuCPst">

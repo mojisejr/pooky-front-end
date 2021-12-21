@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { abi, address } from "../../smartcontract/abi";
 
 function Minting() {
-  const maxMintingPerTx = 3;
+  const maxMintingPerTx = 10;
   const mintState = {
     READY: "READY",
     MINTING: "MINTING",
@@ -18,7 +18,7 @@ function Minting() {
 
   const [isBNB, setIsBNB] = useState(false);
   const [contract, setContract] = useState(undefined);
-  const [pookyToMint, setPookyToMint] = useState(0);
+  const [pookyToMint, setPookyToMint] = useState(null);
   const [mintStatus, setMintStatus] = useState(mintState.READY);
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const { active, activate, library, account, chainId } = useWeb3React();
@@ -56,7 +56,8 @@ function Minting() {
     const price = await getPookyPrice();
     if (mintStatus == mintState.READY) {
       if (pookyToMint > maxMintingPerTx) {
-        alert("only 3 token per transaction!");
+        setPookyToMint(null);
+        alert(`only 10 token per transaction!`);
       } else {
         const totalPrice = price * +pookyToMint;
         setMintStatus(mintState.MINTING);
@@ -66,18 +67,37 @@ function Minting() {
             setMintStatus(mintState.ERROR);
             setPookyToMint(null);
           }
+          setPookyToMint(null);
           setMintStatus(mintState.READY);
         } catch (e) {
           setMintStatus(mintState.READY);
+          setPookyToMint(null);
         }
       }
     }
   }
 
+  //check if all web3 lib is ready to use
+  useEffect(() => {
+    if (chainId !== undefined && library) {
+      if (chainId === 97 || chainId === 56) {
+        setIsBNB(true);
+        const contract = new library.eth.Contract(abi, address);
+        setContract(contract);
+      } else {
+        setIsBNB(false);
+        setContract(undefined);
+      }
+    } else {
+      setIsBNB(false);
+      setContract(undefined);
+    }
+  }, [active, chainId, library]);
+
   //countdown timer
   function calculateTimeLeft() {
-    // let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
-    let future = new Date("Dec 31, 2021 15:42:00 GMT+0700");
+    let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
+    // let future = new Date("Dec 20, 2021 21:20:00 GMT+0700");
     let difference = +future - +new Date();
 
     let timeLeft = {};
@@ -107,30 +127,12 @@ function Minting() {
     if (!timeLeft[interval]) {
       return;
     }
-
     timerComponents.push(
       <span key={interval}>
         {timeLeft[interval]} {interval}{" "}
       </span>
     );
   });
-
-  //check if all web3 lib is ready to use
-  useEffect(() => {
-    if (chainId !== undefined && library) {
-      if (chainId === 97 || chainId === 56) {
-        setIsBNB(true);
-        const contract = new library.eth.Contract(abi, address);
-        setContract(contract);
-      } else {
-        setIsBNB(false);
-        setContract(undefined);
-      }
-    } else {
-      setIsBNB(false);
-      setContract(undefined);
-    }
-  }, [active, chainId, library]);
 
   return (
     <div className="section minting-section w-screen bg-gray-100 flex flex-col items-center pt-20">
@@ -145,6 +147,7 @@ function Minting() {
                   account={account}
                   mintPooky={mintPooky}
                   setPookyToMint={setPookyToMint}
+                  pookyToMint={pookyToMint}
                   mintState={mintState}
                   mintStatus={mintStatus}
                 />
@@ -153,8 +156,9 @@ function Minting() {
               )}
             </div>
           ) : (
-            // <WalletConnectSection connect={connect} />
-            <div className="text-6xl">Comming soon..</div>
+            <div>
+              <WalletConnectSection connect={connect} />
+            </div>
           )}
         </div>
       )}

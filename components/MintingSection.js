@@ -3,11 +3,12 @@ import mintingImage from "../images/Placeholder.gif";
 import cloud1 from "../images/Cloud1.PNG";
 import cloud2 from "../images/Cloud2.PNG";
 import star from "../images/Star1.PNG";
-// import loading from "../images/Loading.GIF";
+import loading from "../images/Loading.GIF";
 function MintingSection({
   account,
   mintPooky,
   setPookyToMint,
+  pookyToMint,
   mintStatus,
   mintState,
 }) {
@@ -46,24 +47,26 @@ function MintingSection({
           />
         </div>
         <div className="mint-box flex flex-col p-5 gap-10 justify-center items-center">
-          <input
-            className="p-5 bg-yellow-200 text-3xl text-center rounded-2xl border-b-4 border-yellow-400 text-blue-400 z-10 outline-none"
-            type="number"
-            placeholder="- Quantity -"
-            onChange={(e) => setPookyToMint(e.target.value)}
-            max={10}
-          ></input>
           {mintStatus == mintState.READY ? (
-            <button onClick={mintPooky}>
-              <div className="minting-btn">
-                {/* <Image src={mintingBtnImage} alt="minting btn" /> */}
-                {/* Coming Soon... !! */}
-              </div>
-            </button>
+            <div className="flex flex-col items-center gap-10">
+              <input
+                className="p-5 bg-yellow-200 text-3xl text-center rounded-2xl border-b-4 border-yellow-400 text-blue-400 z-10 outline-none"
+                type="number"
+                placeholder="- Quantity -"
+                value={pookyToMint}
+                onChange={(e) => setPookyToMint(e.target.value)}
+                max={10}
+              ></input>
+              <button onClick={mintPooky}>
+                <div className="minting-btn">
+                  {/* <Image src={mintingBtnImage} alt="minting btn" /> */}
+                  {/* Coming Soon... !! */}
+                </div>
+              </button>
+            </div>
           ) : (
-            <div className="w-72">
-              {/* <Image src={loading} alt="image" /> */}
-              <div>Loading ...</div>
+            <div className="flex flex-col items-center gap-10 w-72">
+              <Image src={loading} alt="loading" />
             </div>
           )}
         </div>
