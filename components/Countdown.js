@@ -32,7 +32,7 @@ function Countdown({ timerComponents }) {
             <li>* dynamic metadata NFT !</li>
             <li>* be part of animal charity donation.</li>
             <li>* build a strong thailand community driven NFT.</li>
-            <li>* have fun with BNB giveaway until the last minting!</li>
+            <li>* have fun with MATIC giveaway until the last minting!</li>
           </ul>
         </div>
       </div>
