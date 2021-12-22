@@ -19,16 +19,17 @@ function Menu() {
       <Link href="#">
         <a className="menu-item utility hover:text-pink-600">your NFT</a>
       </Link>
-      <Link href="https://nftrade.com/marketplace">
-        <a className="menu-item nftrade" target="_blank">
-          <div className="w-24">
+      <Link href="#">
+        <a className="menu-item nftrade hover:text-blue-700" target="_blank">
+          {/* <div className="w-24">
             <Image src={nftrade} alt="nftrade logo" />
-          </div>
+          </div> */}
+          Opensea
         </a>
       </Link>
-      <div className="w-24">
+      {/* <div className="w-24">
         <Image src={binanceLogo} alt="binance logo" />
-      </div>
+      </div> */}
     </div>
   );
 }

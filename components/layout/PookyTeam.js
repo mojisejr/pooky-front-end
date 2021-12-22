@@ -43,8 +43,8 @@ function PookyTeamSection() {
         <div className="flex-grow"></div>
         <div className="flex md:flex-row flex-col pt-3 pb-3 pl-10 pr-10 bg-opacity-40 bg-gray-200 justify-between items-center">
           <div className="w-24">
-            <Image src={binanceLogo} alt="binance logo"></Image>
-            <Image src={nftrade} alt="nftrade logo"></Image>
+            {/* <Image src={binanceLogo} alt="binance logo"></Image>
+            <Image src={nftrade} alt="nftrade logo"></Image> */}
           </div>
           <div className="md:text-xl text-sm text-center md:text-left">
             Copyright 2021 by Pooky Puppy World. all right reserved
