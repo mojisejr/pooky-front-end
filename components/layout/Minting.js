@@ -22,6 +22,7 @@ function Minting() {
   const [mintStatus, setMintStatus] = useState(mintState.READY);
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const { active, activate, library, account, chainId } = useWeb3React();
+  const test = useWeb3React();
 
   //connect to metamask wallet
   async function connect() {
@@ -79,8 +80,9 @@ function Minting() {
 
   //check if all web3 lib is ready to use
   useEffect(() => {
+    console.log("chainId", chainId);
     if (chainId !== undefined && library) {
-      if (chainId === 97 || chainId === 56) {
+      if (chainId == 4) {
         setIsBNB(true);
         const contract = new library.eth.Contract(abi, address);
         setContract(contract);
@@ -96,7 +98,7 @@ function Minting() {
 
   //countdown timer
   function calculateTimeLeft() {
-    let future = new Date("Dec 25, 2021 08:30:00 GMT+0700");
+    let future = new Date("Dec 28, 2021 08:30:00 GMT+0700");
     // let future = new Date("Dec 20, 2021 21:20:00 GMT+0700");
     let difference = +future - +new Date();
 
@@ -182,7 +184,7 @@ function WalletConnectSection({ connect }) {
         Connect Wallet
       </button>
       <div>
-        please check if you are connecting with Binance Smart Chain Mainnet.
+        please check if you are connecting with Polygon [Matic] Mainnet.
       </div>
     </div>
   );

@@ -37,11 +37,11 @@ function PookyTokenSection() {
               generation will have this property. Discount rate will be
               generated at the mint time. for the fast giveaway. So every 200
               pookies minted will be giveaway{" "}
-              <span className="text-purple-700 md:text-2xl">MATIC</span> to one
-              lucky minter! that it!? No! the minter who mint the last one at
-              token number 3000 will get{" "}
+              <span className="text-purple-700 md:text-2xl">720 MATIC</span> to
+              one lucky minter! that it!? No! the minter who mint the last one
+              at token number 3000 will get{" "}
               <span className="text-purple-700 md:text-2xl">
-                special MATIC amount !
+                special 1700 MATIC amount !
               </span>{" "}
               <span>
                 <Link href="https://discord.gg/6JvuCPst">

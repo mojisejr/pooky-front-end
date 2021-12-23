@@ -6,7 +6,7 @@ import star from "../images/Star1.PNG";
 import loading from "../images/Loading.gif";
 function MintingSection({
   account,
-  mintPooky,
+  mintPooky = "",
   setPookyToMint,
   pookyToMint,
   mintStatus,
@@ -53,7 +53,7 @@ function MintingSection({
                 className="p-5 bg-yellow-200 text-3xl text-center rounded-2xl border-b-4 border-yellow-400 text-blue-400 z-10 outline-none"
                 type="number"
                 placeholder="- Quantity -"
-                value={pookyToMint}
+                value={pookyToMint || ""}
                 onChange={(e) => setPookyToMint(e.target.value)}
                 max={10}
               ></input>

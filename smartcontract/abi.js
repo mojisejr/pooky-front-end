@@ -1,7 +1,6 @@
 export const abi = [
   {
     inputs: [
-      { internalType: "string", name: "seed", type: "string" },
       { internalType: "address", name: "owner1", type: "address" },
       { internalType: "address", name: "owner2", type: "address" },
       { internalType: "address", name: "donate", type: "address" },
@@ -49,7 +48,12 @@ export const abi = [
         name: "operator",
         type: "address",
       },
-      { indexed: false, internalType: "bool", name: "approved", type: "bool" },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
     ],
     name: "ApprovalForAll",
     type: "event",
@@ -76,7 +80,12 @@ export const abi = [
   {
     anonymous: false,
     inputs: [
-      { indexed: true, internalType: "address", name: "from", type: "address" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
       { indexed: true, internalType: "address", name: "to", type: "address" },
       {
         indexed: true,
@@ -86,19 +95,6 @@ export const abi = [
       },
     ],
     name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "_account",
-        type: "address",
-      },
-    ],
-    name: "baseURIUpdated",
     type: "event",
   },
   {
@@ -136,7 +132,7 @@ export const abi = [
         type: "uint256",
       },
     ],
-    name: "giveawayBNBto",
+    name: "giveawayMATICto",
     type: "event",
   },
   {
@@ -239,26 +235,42 @@ export const abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "_price",
+        name: "_id",
         type: "uint256",
       },
     ],
-    name: "priceChanged",
+    name: "tokenPurchased",
     type: "event",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "_account",
-        type: "address",
-      },
-      { indexed: false, internalType: "uint256", name: "_id", type: "uint256" },
+    inputs: [],
+    name: "_owner_1",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_owner_2",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    name: "_pookyInfo",
+    outputs: [
+      { internalType: "string", name: "name", type: "string" },
+      { internalType: "uint256", name: "birthdate", type: "uint256" },
+      { internalType: "uint256", name: "discount", type: "uint256" },
+      { internalType: "string", name: "description", type: "string" },
+      { internalType: "uint256", name: "str", type: "uint256" },
+      { internalType: "uint256", name: "vit", type: "uint256" },
+      { internalType: "uint256", name: "agi", type: "uint256" },
+      { internalType: "uint256", name: "wis", type: "uint256" },
     ],
-    name: "tokenPurchased",
-    type: "event",
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [
@@ -432,6 +444,13 @@ export const abi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "seeded",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       { internalType: "address", name: "operator", type: "address" },
       { internalType: "bool", name: "approved", type: "bool" },
@@ -487,6 +506,13 @@ export const abi = [
   {
     inputs: [{ internalType: "bool", name: "val", type: "bool" }],
     name: "setReveal",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "string", name: "seed", type: "string" }],
+    name: "setSeed",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -598,4 +624,4 @@ export const abi = [
   },
 ];
 
-export const address = "0x3cA7AfA1d2715E1F4bD8a95b7B2780E752855028";
+export const address = "0x9132A0B1124470863deBaaBB8f14b2DD07a65148";

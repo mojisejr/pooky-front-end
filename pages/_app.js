@@ -16,11 +16,11 @@ function MyApp({ Component, pageProps }) {
   if (!appId || !serverUrl) throw new Error("invaled serverUrl or AppId");
   return (
     <Layout>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        <MoralisProvider appId={appId} serverUrl={serverUrl}>
+      <MoralisProvider appId={appId} serverUrl={serverUrl}>
+        <Web3ReactProvider getLibrary={getLibrary}>
           <Component {...pageProps} />
-        </MoralisProvider>
-      </Web3ReactProvider>
+        </Web3ReactProvider>
+      </MoralisProvider>
     </Layout>
   );
 }

@@ -23,8 +23,8 @@ function Countdown({ timerComponents }) {
       <div className="z-10 md:flex md:flex-col md:gap-10 justify-center items-center">
         <div className="text-3xl">Public sale will be live in..</div>
         <div className="text-6xl bg-gradient-to-tr from-pink-300 to-purple-400 bg-clip-text text-transparent">
-          {/* {timerComponents} */}
-          <div>Coming soon!</div>
+          {timerComponents}
+          {/* <div>Coming soon!</div> */}
         </div>
         <div className="text-sm">
           <ul>
