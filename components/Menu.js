@@ -9,7 +9,7 @@ function Menu() {
       <Link href="#">
         <a className="menu-item utility hover:text-pink-600">OG NFT</a>
       </Link>
-      <Link href="#">
+      <Link href="/xmas">
         <a className="menu-item utility hover:text-pink-600">XMAS NFT</a>
       </Link>
       <Link href="https://discord.gg/MBmCRCKpYB">

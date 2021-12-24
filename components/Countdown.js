@@ -28,6 +28,10 @@ function Countdown({ timerComponents }) {
         </div>
         <div className="text-sm">
           <ul>
+            <li>
+              * public sale{" "}
+              <span className="text-pink-400">28 DEC 2021 20:00 GMT+7:00</span>
+            </li>
             <li>* get discount from our artist forever.</li>
             <li>* dynamic metadata NFT !</li>
             <li>* be part of animal charity donation.</li>

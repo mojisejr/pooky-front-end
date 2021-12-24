@@ -49,14 +49,19 @@ function MintingSection({
         <div className="mint-box flex flex-col p-5 gap-10 justify-center items-center">
           {mintStatus == mintState.READY ? (
             <div className="flex flex-col items-center gap-10">
-              <input
-                className="p-5 bg-yellow-200 text-3xl text-center rounded-2xl border-b-4 border-yellow-400 text-blue-400 z-10 outline-none"
-                type="number"
-                placeholder="- Quantity -"
-                value={pookyToMint || ""}
-                onChange={(e) => setPookyToMint(e.target.value)}
-                max={10}
-              ></input>
+              <div className="z-10">
+                <input
+                  className="p-5 bg-yellow-200 text-3xl text-center rounded-2xl border-b-4 border-yellow-400 text-blue-400 outline-none"
+                  type="number"
+                  placeholder="- Quantity -"
+                  value={pookyToMint || ""}
+                  onChange={(e) => setPookyToMint(e.target.value)}
+                  max={10}
+                ></input>
+                <div className="text-indigo-700 text-right pr-5">
+                  9 MATIC(~0.005ETH) per NFT.
+                </div>
+              </div>
               <button onClick={mintPooky}>
                 <div className="minting-btn">
                   {/* <Image src={mintingBtnImage} alt="minting btn" /> */}

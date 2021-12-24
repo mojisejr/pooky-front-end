@@ -4,7 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import pookyLogo from "../images/Logo.png";
 import imgLoading from "../images/Loading.gif";
-import { abi, address } from "../smartcontract/abi";
+import { abi, address } from "../smartcontract/xmas2021";
 import { useEffect, useState } from "react";
 import * as Base64 from "base-64";
 import "../styles/yournft.module.css";
