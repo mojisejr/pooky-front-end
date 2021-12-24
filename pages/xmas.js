@@ -34,21 +34,35 @@ function MetadataPage() {
     UPDATE_META_STATE.READY
   );
   const [nftDataState, setNftDataState] = useState(NFT_DATA_STATE.LOADING);
+  const [nftReveal, setReveal] = useState(false);
+  const [signRequest, setSignRequest] = useState(false);
 
   async function connect() {
     try {
       await authenticate();
       await enableWeb3();
+      setSignRequest(true);
+      setNftDataState(NFT_DATA_STATE.READY);
     } catch (e) {
       throw new Error(e);
     }
   }
 
   useEffect(() => {
-    if (account) {
-      getAllNft();
+    if (!signRequest) {
+      connect();
+      setSignRequest(true);
     }
-  }, [account, selectedPooky]);
+  }, []);
+
+  useEffect(() => {
+    if (account) {
+      isReveal();
+      if (nftReveal) {
+        getAllNft();
+      }
+    }
+  }, [account, selectedPooky, nftReveal]);
 
   useEffect(() => {
     if (isWeb3Enabled) {
@@ -63,7 +77,7 @@ function MetadataPage() {
   async function getAllNft() {
     setNftDataState(NFT_DATA_STATE.LOADING);
     const nftOption = {
-      chain: "rinkeby",
+      chain: "polygon",
       address,
     };
     const { result } = await Web3API.token.getNFTOwners(nftOption);
@@ -92,7 +106,7 @@ function MetadataPage() {
   async function getTokenURI(tokenId) {
     try {
       const jsonBase64 = await native.runContractFunction({
-        chain: "rinkeby",
+        chain: "polygon",
         address,
         abi,
         function_name: "tokenURI",
@@ -104,6 +118,16 @@ function MetadataPage() {
       setNftDataState(NFT_DATA_STATE.ERROR);
       throw new Error(e);
     }
+  }
+
+  async function isReveal() {
+    const reveal = await native.runContractFunction({
+      chain: "polygon",
+      address,
+      abi,
+      function_name: "isReveal",
+    });
+    reveal ? setReveal(true) : setReveal(false);
   }
 
   async function updateMetadata(e) {
@@ -123,6 +147,7 @@ function MetadataPage() {
           )
           .send({ from: account });
         if (tx.status) {
+          setSelectedPooky({});
           setUpdateMetadata(UPDATE_META_STATE.SUCCESS);
           await getAllNft();
         } else {
@@ -177,83 +202,93 @@ function MetadataPage() {
               <LoadingComponent text="" />
             ) : (
               <div>
-                <div className="mb-4">
-                  {selectedPooky.image != undefined ? (
-                    <div className="image-box w-full flex justify-between gap-2">
-                      <Image
-                        src={selectedPooky.image}
-                        alt="pookyImage"
-                        width={200}
-                        height={200}
-                      />
-                      <div className="token-info self-center pl-4">
-                        <div>
-                          <span className="text-pink-400">NAME: </span>{" "}
-                          {selectedPooky.pookyName}
-                        </div>
-                        <div>
-                          <span className="text-pink-400">BIRTHDAY: </span>
-                          {new Date(
-                            selectedPooky.birthday * 1000
-                          ).toLocaleDateString()}
-                        </div>
-                        {selectedPooky.str &&
-                        selectedPooky.agi &&
-                        selectedPooky.vit &&
-                        selectedPooky.wis ? (
-                          <div>
-                            <span className="text-pink-400">
-                              str: {selectedPooky.str}{" "}
-                            </span>
-                            <span className="text-pink-400">
-                              vit: {selectedPooky.agi}{" "}
-                            </span>
-                            <span className="text-pink-400">
-                              agi: {selectedPooky.vit}{" "}
-                            </span>
-                            <span className="text-pink-400">
-                              wis: {selectedPooky.wis}{" "}
-                            </span>
+                {nftReveal ? (
+                  <div>
+                    <div className="mb-4">
+                      {selectedPooky.image != undefined ? (
+                        <div className="image-box w-full flex items-center justify-between gap-2">
+                          <Image
+                            placeholder={imgLoading}
+                            loading="lazy"
+                            src={selectedPooky.image}
+                            alt="pookyImage"
+                            width={200}
+                            height={200}
+                          />
+                          <div className="token-info self-center pl-4">
+                            <div>
+                              <span className="text-pink-400">NAME: </span>{" "}
+                              {selectedPooky.pookyName}
+                            </div>
+                            <div>
+                              <span className="text-pink-400">BIRTHDAY: </span>
+                              {new Date(
+                                selectedPooky.birthday * 1000
+                              ).toLocaleDateString()}
+                            </div>
+                            {selectedPooky.str &&
+                            selectedPooky.agi &&
+                            selectedPooky.vit &&
+                            selectedPooky.wis ? (
+                              <div>
+                                <span className="text-pink-400">
+                                  str: {selectedPooky.str}{" "}
+                                </span>
+                                <span className="text-pink-400">
+                                  vit: {selectedPooky.agi}{" "}
+                                </span>
+                                <span className="text-pink-400">
+                                  agi: {selectedPooky.vit}{" "}
+                                </span>
+                                <span className="text-pink-400">
+                                  wis: {selectedPooky.wis}{" "}
+                                </span>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() =>
+                                  getPookyStatus(selectedPooky.tokenId)
+                                }
+                                className="bg-pink-200 p-2 shadow-2xl rounded-xl"
+                              >
+                                get your status
+                              </button>
+                            )}
+                            <div>
+                              <span className="text-pink-400">Discount: </span>
+                              {selectedPooky.discount} %
+                            </div>
+
+                            <div className="w-56">
+                              {selectedPooky.pookyDesc}
+                            </div>
                           </div>
-                        ) : (
-                          <button
-                            onClick={() =>
-                              getPookyStatus(selectedPooky.tokenId)
-                            }
-                            className="bg-pink-200 p-2 shadow-2xl rounded-xl"
-                          >
-                            get your status
-                          </button>
-                        )}
-                        <div>
-                          <span className="text-pink-400">Discount: </span>
-                          {selectedPooky.discount} %
                         </div>
-
-                        <div className="w-56">{selectedPooky.pookyDesc}</div>
-                      </div>
+                      ) : (
+                        <div className="flex justify-center items-center">
+                          <Image
+                            src={imgLoading}
+                            alt="pookyImage"
+                            width={200}
+                            height={200}
+                          />
+                        </div>
+                      )}
                     </div>
-                  ) : (
-                    <div className="flex justify-center items-center">
-                      <Image
-                        src={imgLoading}
-                        alt="pookyImage"
-                        width={200}
-                        height={200}
+
+                    <MetadataChangingForm
+                      updateMetadata={updateMetadata}
+                      selectedPooky={selectedPooky}
+                    >
+                      <PookySelector
+                        myPooky={myPooky}
+                        setSelectedPooky={setSelectedPooky}
                       />
-                    </div>
-                  )}
-                </div>
-
-                <MetadataChangingForm
-                  updateMetadata={updateMetadata}
-                  selectedPooky={selectedPooky}
-                >
-                  <PookySelector
-                    myPooky={myPooky}
-                    setSelectedPooky={setSelectedPooky}
-                  />
-                </MetadataChangingForm>
+                    </MetadataChangingForm>
+                  </div>
+                ) : (
+                  <NotRevealComponent />
+                )}
               </div>
             )}
           </div>
@@ -335,7 +370,19 @@ function WalletConnectButton({ connect, account }) {
 function LoadingComponent({ text }) {
   return (
     <div>
-      <span>Loading {text} ..</span>
+      <div>
+        <Image src={imgLoading} alt="pookyImage" width={200} height={200} />
+      </div>
+    </div>
+  );
+}
+function NotRevealComponent() {
+  return (
+    <div className="text-pink-500 flex justify-center items-center flex-col">
+      <div className="w-72">
+        <Image src={imgLoading} alt="loading" />
+      </div>
+      <div className="no-reveal-title text-4xl">Revealing Soon ...</div>
     </div>
   );
 }

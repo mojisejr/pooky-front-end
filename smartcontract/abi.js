@@ -48,12 +48,7 @@ export const abi = [
         name: "operator",
         type: "address",
       },
-      {
-        indexed: false,
-        internalType: "bool",
-        name: "approved",
-        type: "bool",
-      },
+      { indexed: false, internalType: "bool", name: "approved", type: "bool" },
     ],
     name: "ApprovalForAll",
     type: "event",
@@ -80,12 +75,7 @@ export const abi = [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
+      { indexed: true, internalType: "address", name: "from", type: "address" },
       { indexed: true, internalType: "address", name: "to", type: "address" },
       {
         indexed: true,
@@ -232,12 +222,7 @@ export const abi = [
         name: "_account",
         type: "address",
       },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
+      { indexed: false, internalType: "uint256", name: "_id", type: "uint256" },
     ],
     name: "tokenPurchased",
     type: "event",
@@ -539,6 +524,13 @@ export const abi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "statusClaimed",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
     name: "supportsInterface",
     outputs: [{ internalType: "bool", name: "", type: "bool" }],
@@ -623,5 +615,4 @@ export const abi = [
     type: "function",
   },
 ];
-
-export const address = "0x9132A0B1124470863deBaaBB8f14b2DD07a65148";
+export const address = "0xD67cf8842D9e28B9416880B07bbdF889A359d899";
