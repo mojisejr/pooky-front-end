@@ -1,8 +1,9 @@
 import SectionHeader from "../SectionHeader";
 import team1 from "../../images/Feem.JPG";
 import team2 from "../../images/Min.JPG";
-import nftrade from "../../images/nftrade.png";
-import binanceLogo from "../../images/binancelogo.png";
+import polygonLogo from "../../images/polygonLogo1.png";
+import openseaLogo from "../../images/openseaLogo1.png";
+import moralisLogo from "../../images/moralisLogo1.png";
 import rainbow2 from "../../images/Rainbow2.PNG";
 import Image from "next/image";
 import PookyTeamCard from "../PookyTeamCard";
@@ -43,8 +44,9 @@ function PookyTeamSection() {
         <div className="flex-grow"></div>
         <div className="flex md:flex-row flex-col pt-3 pb-3 pl-10 pr-10 bg-opacity-40 bg-gray-200 justify-between items-center">
           <div className="w-24">
-            {/* <Image src={binanceLogo} alt="binance logo"></Image>
-            <Image src={nftrade} alt="nftrade logo"></Image> */}
+            <Image src={polygonLogo} alt="polygon logo"></Image>
+            <Image src={openseaLogo} alt="opensea logo"></Image>
+            <Image src={moralisLogo} alt="moralis logo"></Image>
           </div>
           <div className="md:text-xl text-sm text-center md:text-left">
             Copyright 2021 by Pooky Puppy World. all right reserved

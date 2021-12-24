@@ -2,6 +2,7 @@ import Image from "next/image";
 import pookyLogo from "../../images/Logo.png";
 import planet1 from "../../images/MainPicture1.PNG";
 import stars from "../../images/bgStar.PNG";
+
 import Menu from "../Menu";
 
 function HomeSection() {
