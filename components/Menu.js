@@ -6,7 +6,7 @@ import openseaLogo from "../images/openseaLogo1.png";
 function Menu() {
   return (
     <div className="menu-box flex md:flex-row md:items-center flex-col text-xl gap-3 md:mr-10 md:p-5 p-10 bg-gray-300 bg-opacity-80 rounded-xl md:text-white text-black shadow-2xl">
-      <Link href="/yournft">
+      <Link href="#">
         <a className="menu-item utility hover:text-pink-600">OG NFT</a>
       </Link>
       <Link href="/xmas">
