@@ -26,6 +26,7 @@ function Countdown({ timerComponents }) {
           {timerComponents}
           {/* <div>Coming soon!</div> */}
         </div>
+        <div className="text-purple-600 text-xl">9 Matic/Pooky (~0.005ETH)</div>
         <div className="text-sm">
           <ul>
             <li>
@@ -35,7 +36,6 @@ function Countdown({ timerComponents }) {
             <li>* get discount from our artist forever.</li>
             <li>* dynamic metadata NFT !</li>
             <li>* be part of animal charity donation.</li>
-            <li>* build a strong thailand community driven NFT.</li>
             <li>* have fun with MATIC giveaway until the last minting!</li>
           </ul>
         </div>

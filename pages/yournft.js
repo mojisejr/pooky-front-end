@@ -24,14 +24,8 @@ function MetadataPage() {
     ERROR: "error",
   };
 
-  const {
-    authenticate,
-    enableWeb3,
-    account,
-    web3,
-    isWeb3Enabled,
-    isInitialized,
-  } = useMoralis();
+  const { authenticate, enableWeb3, account, web3, isWeb3Enabled } =
+    useMoralis();
   const { Web3API, native } = useMoralisWeb3Api();
   const [myPooky, setMyPooky] = useState([]);
   const [selectedPooky, setSelectedPooky] = useState({});
@@ -84,10 +78,10 @@ function MetadataPage() {
   async function getAllNft() {
     setNftDataState(NFT_DATA_STATE.LOADING);
     const nftOption = {
-      chain: "mumbai",
-      address,
+      chain: "polygon",
+      token_address: address,
     };
-    const { result } = await Web3API.token.getNFTOwners(nftOption);
+    const { result } = await Web3API.account.getNFTsForContract(nftOption);
 
     let results = result.map(async (token) => {
       const metadata = await getTokenURI(token.token_id);
@@ -113,7 +107,7 @@ function MetadataPage() {
   async function getTokenURI(tokenId) {
     try {
       const jsonBase64 = await native.runContractFunction({
-        chain: "mumbai",
+        chain: "polygon",
         address,
         abi,
         function_name: "tokenURI",
@@ -128,7 +122,7 @@ function MetadataPage() {
 
   async function isReveal() {
     const reveal = await native.runContractFunction({
-      chain: "mumbai",
+      chain: "polygon",
       address,
       abi,
       function_name: "isReveal",
