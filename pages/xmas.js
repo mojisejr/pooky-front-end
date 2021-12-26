@@ -78,9 +78,10 @@ function MetadataPage() {
     setNftDataState(NFT_DATA_STATE.LOADING);
     const nftOption = {
       chain: "polygon",
-      address,
+      token_address: address,
     };
-    const { result } = await Web3API.token.getNFTOwners(nftOption);
+    // const { result } = await Web3API.token.getNFTOwners(nftOption);
+    const { result } = await Web3API.account.getNFTsForContract(nftOption);
 
     let results = result.map(async (token) => {
       const metadata = await getTokenURI(token.token_id);
