@@ -40,10 +40,10 @@ function Minting() {
   }
 
   //smart contract internal mint function
-  async function _mintPooky(BNB, num) {
+  async function _mintPooky(MATIC, num) {
     const tx = await contract.methods.getPooky(num).send({
       from: account,
-      value: library.utils.toWei(BNB.toString(), "wei"),
+      value: library.utils.toWei(MATIC.toString(), "wei"),
     });
     return tx.status;
   }
@@ -67,9 +67,11 @@ function Minting() {
           if (!result) {
             setMintStatus(mintState.ERROR);
             setPookyToMint(null);
+            alert("something went wrong with minting.. pls try again..");
           }
           setPookyToMint(null);
           setMintStatus(mintState.READY);
+          alert("your nft is minted !! thank you.");
         } catch (e) {
           setMintStatus(mintState.READY);
           setPookyToMint(null);
@@ -80,9 +82,8 @@ function Minting() {
 
   //check if all web3 lib is ready to use
   useEffect(() => {
-    console.log("chainId", chainId);
     if (chainId !== undefined && library) {
-      if (chainId == 80001) {
+      if (chainId == 137) {
         setIsBNB(true);
         const contract = new library.eth.Contract(abi, address);
         setContract(contract);
