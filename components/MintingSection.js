@@ -22,10 +22,6 @@ function MintingSection({
       </div>
 
       <div className="mint-wrapper flex items-center justify-center gap-10 p-5 relative">
-        <div className="absolute w-24 right-0 top-3 z-20">
-          <Image src={star} alt="Star Image" />
-        </div>
-
         <div className="mint-image-box">
           <Image
             src={mintingImage}
