@@ -22,18 +22,6 @@ function MintingSection({
       </div>
 
       <div className="mint-wrapper flex items-center justify-center gap-10 p-5 relative">
-        <div className="absolute w-72 -right-10 -top-20 z-20">
-          <Image src={cloud1} alt="Cloud Image" />
-        </div>
-        <div className="absolute -top-20">
-          <div className="absolute w-72">
-            <Image src={cloud2} alt="Cloud Image" />
-          </div>
-          <div className="absolute w-28 top-12 left-5">
-            <Image src={star} alt="Star Image" />
-          </div>
-        </div>
-
         <div className="absolute w-24 right-0 top-3 z-20">
           <Image src={star} alt="Star Image" />
         </div>

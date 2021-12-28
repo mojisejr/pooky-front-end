@@ -84,6 +84,7 @@ function Minting() {
   useEffect(() => {
     if (chainId !== undefined && library) {
       if (chainId == 137) {
+        // if (chainId == 80001) {
         setIsBNB(true);
         const contract = new library.eth.Contract(abi, address);
         setContract(contract);
@@ -99,8 +100,8 @@ function Minting() {
 
   //countdown timer
   function calculateTimeLeft() {
-    let future = new Date("Dec 28, 2021 20:00:00 GMT+0700");
-    // let future = new Date("Dec 20, 2021 21:20:00 GMT+0700");
+    // let future = new Date("Dec 28, 2021 20:00:00 GMT+0700");
+    let future = new Date("Dec 20, 2021 21:20:00 GMT+0700");
     let difference = +future - +new Date();
 
     let timeLeft = {};

@@ -616,4 +616,7 @@ export const abi = [
   },
 ];
 
+//mainnet
 export const address = "0x5264e04F8Ce4A77B914c8139559b330C0aaD0453";
+//testnet
+// export const address = "0x62dA0f083DED0D2F2981399ED7513D717b81776D";
